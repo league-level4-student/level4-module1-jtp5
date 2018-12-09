@@ -101,19 +101,15 @@ public class Snake {
 		// of the window
 		// and false otherwise
 		if (head.getLocation().x > _00_SnakeGame.WINDOW_WIDTH) {
-			System.out.println("test1");
 			return true;
 		}
 		if (head.getLocation().x < 0) {
-			System.out.println("test2");
 			return true;
 		}
 		if (head.getLocation().y > _00_SnakeGame.WINDOW_HEIGHT) {
-			System.out.println("test3");
 			return true;
 		}
 		if (head.getLocation().y < 0) {
-			System.out.println("test4");
 			return true;
 		}
 		return false;

@@ -49,8 +49,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 				g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 				g.setColor(FOOD_COLOR);
-				g.drawOval(foodLocation.x * WINDOW_SCALE, foodLocation.y * WINDOW_SCALE, Snake.BODY_SIZE,
-						Snake.BODY_SIZE);
+				g.drawOval(foodLocation.x, foodLocation.y, Snake.BODY_SIZE, Snake.BODY_SIZE);
 				snake.draw(g);
 			}
 		};
@@ -137,7 +136,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	private void setFoodLocation() {
 		// 1. Create a new Location object that is set to a random location
 		Random r = new Random();
-		Location loc = new Location(r.nextInt(WINDOW_WIDTH), r.nextInt(WINDOW_HEIGHT));
+		Location loc = new Location(20 + r.nextInt(WINDOW_WIDTH - 60), 20 + r.nextInt(WINDOW_HEIGHT - 60));
 		// 2. set the foodLocation variable equal to the Location object you just
 		// created.
 		// use the snake's isLocationOnSnake method to make sure you don't put the food
@@ -161,6 +160,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// reset the snake and the food and start the timer
 		if (playAgain == 0) {
 			snake.reset(new Location(WIDTH / 2, HEIGHT / 2));
+			snake.setDirection(Direction.RIGHT);
 			setFoodLocation();
 			timer.start();
 		}
@@ -186,7 +186,8 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		}
 		// 3. if the location of the head is equal to the location of the food,
 		// feed the snake and set the food location
-		if (snake.getHeadLocation() == foodLocation) {
+		if (snake.getHeadLocation().x < foodLocation.x + 50 && snake.getHeadLocation().x > foodLocation.x - 50
+				&& snake.getHeadLocation().y < foodLocation.y + 50 && snake.getHeadLocation().y > foodLocation.y - 50) {
 			snake.feed();
 			setFoodLocation();
 		}

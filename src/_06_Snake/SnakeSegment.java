@@ -22,6 +22,6 @@ public class SnakeSegment {
 
 	public void draw(Graphics g) {
 		g.setColor(Color.BLUE);
-		g.drawRect(location.x * size, location.y * size, size, size);
+		g.drawRect(location.x, location.y, size, size);
 	}
 }
